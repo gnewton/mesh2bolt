@@ -14,6 +14,7 @@ var DESCRIPTOR_XML_FILE *string
 var QUALIFIER_XML_FILE *string
 var SUPPLEMENTAL_XML_FILE *string
 var PHARMACOLOGICAL_XML_FILE *string
+var commitSize = 10000
 
 const BUCKET_SUPPLEMENTAL = "supplemental"
 
@@ -33,6 +34,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	loadSupplemental(db)
+	loadDescriptor(db)
+	loadQualifier(db)
+	loadPharmacological(db)
+
+	db.Close()
+}
+
+func loadDescriptor(db *bolt.DB) {
+}
+
+func loadQualifier(db *bolt.DB) {
+}
+
+func loadPharmacological(db *bolt.DB) {
+}
+
+func loadSupplemental(db *bolt.DB) {
 	tx, err := db.Begin(true)
 	if err != nil {
 		log.Fatal(err)
@@ -55,7 +74,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	commitSize := 10000
+
 	commitCounter := 0
 	tx, err = db.Begin(true)
 	if err != nil {
@@ -115,35 +134,8 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	log.Println("")
-	log.Println("")
-	log.Println("")
-
-	log.Println("****************************************************************************************")
-	log.Println("****************************************************************************************")
-	log.Println("****************************************************************************************")
-	tx, err = db.Begin(false)
-	if err != nil {
-		log.Fatal("error:", err)
-	}
-
-	suppChannel, file, err = gomesh.SupplementalChannelFromFile(*SUPPLEMENTAL_XML_FILE)
-	if err != nil {
-		log.Fatal(err)
-	}
-	b = tx.Bucket([]byte(BUCKET_SUPPLEMENTAL))
-
 	// c := b.Cursor()
 	// for k, _ := c.First(); k != nil; k, _ = c.Next() {
 	// 	log.Printf("key=%s\n", k)
 	// }
-	log.Println("****************************************************************************************")
-	for s := range suppChannel {
-		key := s.SupplementalRecordUI
-
-		v := b.Get([]byte(key))
-		if v == nil {
-			log.Println("Unable to find", key)
-		}
-	}
 }
