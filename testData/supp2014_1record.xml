@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<!DOCTYPE SupplementalRecordSet SYSTEM "supp2014.dtd">
+<SupplementalRecordSet LanguageCode = "eng">
+<SupplementalRecord SCRClass = "1">
+  <SupplementalRecordUI>C077171</SupplementalRecordUI>
+  <SupplementalRecordName>
+   <String>HIVEP2 protein, human</String>
+  </SupplementalRecordName>
+  <DateCreated>
+   <Year>1992</Year>
+   <Month>11</Month>
+   <Day>05</Day>
+  </DateCreated>
+  <DateRevised>
+   <Year>2013</Year>
+   <Month>05</Month>
+   <Day>15</Day>
+  </DateRevised>
+  <ActiveMeSHYearList>
+   <Year>1993</Year>
+   <Year>1994</Year>
+   <Year>1995</Year>
+   <Year>1996</Year>
+   <Year>1997</Year>
+   <Year>1998</Year>
+   <Year>1999</Year>
+   <Year>2000</Year>
+   <Year>2001</Year>
+   <Year>2001A</Year>
+   <Year>2002</Year>
+   <Year>2003</Year>
+   <Year>2004</Year>
+   <Year>2004A</Year>
+   <Year>2004B</Year>
+   <Year>2004C</Year>
+   <Year>2005</Year>
+   <Year>2006</Year>
+   <Year>2006A</Year>
+   <Year>2007</Year>
+   <Year>2007A</Year>
+   <Year>2008</Year>
+   <Year>2009</Year>
+   <Year>2010</Year>
+   <Year>2011</Year>
+   <Year>2012</Year>
+   <Year>2013</Year>
+   <Year>2013A</Year>
+   <Year>2014</Year>
+  </ActiveMeSHYearList>
+  <Note>RefSeq NM_006734
+  </Note>
+  <Frequency>33</Frequency>
+  <HeadingMappedToList>
+   <HeadingMappedTo>
+    <DescriptorReferredTo>
+     <DescriptorUI>*D004268</DescriptorUI>
+     <DescriptorName>
+      <String>DNA-Binding Proteins</String>
+     </DescriptorName>
+    </DescriptorReferredTo>
+   </HeadingMappedTo>
+   <HeadingMappedTo>
+    <DescriptorReferredTo>
+     <DescriptorUI>*D014157</DescriptorUI>
+     <DescriptorName>
+      <String>Transcription Factors</String>
+     </DescriptorName>
+    </DescriptorReferredTo>
+   </HeadingMappedTo>
+  </HeadingMappedToList>
+  <IndexingInformationList>
+   <IndexingInformation>
+     <DescriptorReferredTo>
+    <DescriptorUI>D008285</DescriptorUI>
+     <DescriptorName>
+      <String>Major Histocompatibility Complex</String>
+      </DescriptorName>
+     </DescriptorReferredTo>
+   </IndexingInformation>
+   <IndexingInformation>
+     <DescriptorReferredTo>
+    <DescriptorUI>D016335</DescriptorUI>
+     <DescriptorName>
+      <String>Zinc Fingers</String>
+      </DescriptorName>
+     </DescriptorReferredTo>
+   </IndexingInformation>
+  </IndexingInformationList>
+  <SourceList>
+   <Source>Proc Natl Acad Sci U S A 1992 Oct 1;89(19):8971-5</Source>
+  </SourceList>
+  <RecordOriginatorsList>
+   <RecordOriginator>THA</RecordOriginator>
+   <RecordMaintainer>BMB</RecordMaintainer>
+   <RecordAuthorizer>BMB</RecordAuthorizer>
+  </RecordOriginatorsList>
+  <ConceptList>
+   <Concept PreferredConceptYN="Y">
+    <ConceptUI>M0207341</ConceptUI>
+    <ConceptName>
+     <String>HIVEP2 protein, human</String>
+    </ConceptName>
+    <RegistryNumber>148770-78-9</RegistryNumber>
+    <SemanticTypeList>
+     <SemanticType>
+      <SemanticTypeUI>T116</SemanticTypeUI>
+      <SemanticTypeName>Amino Acid, Peptide, or Protein</SemanticTypeName>
+     </SemanticType>
+     <SemanticType>
+      <SemanticTypeUI>T123</SemanticTypeUI>
+      <SemanticTypeName>Biologically Active Substance</SemanticTypeName>
+     </SemanticType>
+    </SemanticTypeList>
+    <TermList>
+     <Term  ConceptPreferredTermYN="Y"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="Y"  RecordPreferredTermYN="Y">
+      <TermUI>T576590</TermUI>
+      <String>HIVEP2 protein, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>03</Month>
+       <Day>12</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T610332</TermUI>
+      <String>HIV-enhancer binding protein EP2, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>09</Month>
+       <Day>21</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T610331</TermUI>
+      <String>HIV-EP2 protein, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>09</Month>
+       <Day>21</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T576591</TermUI>
+      <String>human immunodeficiency virus type I enhancer binding protein 2, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>03</Month>
+       <Day>12</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T237345</TermUI>
+      <String>MHC-binding protein 2, human</String>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (1992)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T594479</TermUI>
+      <String>MIBP1 protein, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>07</Month>
+       <Day>02</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T594480</TermUI>
+      <String>Myc-intron-binding peptide, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>07</Month>
+       <Day>02</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T844160</TermUI>
+      <String>schnurri-2 protein, human</String>
+      <DateCreated>
+       <Year>2013</Year>
+       <Month>05</Month>
+       <Day>15</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2013)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T594481</TermUI>
+      <String>c-myc intron binding protein 1, human</String>
+      <DateCreated>
+       <Year>2004</Year>
+       <Month>07</Month>
+       <Day>02</Day>
+      </DateCreated>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (2004)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+     <Term  ConceptPreferredTermYN="N"  IsPermutedTermYN="N"  LexicalTag="NON"  PrintFlagYN="N"  RecordPreferredTermYN="N">
+      <TermUI>T237346</TermUI>
+      <String>major histocompatibility complex-binding protein 2, human</String>
+      <ThesaurusIDlist>
+       <ThesaurusID>NLM (1992)</ThesaurusID>
+      </ThesaurusIDlist>
+     </Term>
+    </TermList>
+   </Concept>
+  </ConceptList>
+ </SupplementalRecord>
+
+</SupplementalRecordSet>
