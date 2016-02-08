@@ -8,6 +8,7 @@ import (
 	"github.com/boltdb/bolt"
 	"github.com/gnewton/gomesh"
 	"log"
+	"strings"
 )
 
 // Write MeSH XMl for MeSH 2014
@@ -52,6 +53,7 @@ func main() {
 	loadPharmacological(db)
 
 	db.Close()
+
 }
 
 func loadDescriptor(db *bolt.DB) {
@@ -85,7 +87,21 @@ func loadDescriptor(db *bolt.DB) {
 		log.Fatal("error:", err)
 	}
 	b := tx.Bucket([]byte(BUCKET_DESCRIPTOR))
+
+	size := 0
+
+	root := InitializeNode()
+
 	for desc := range descChannel {
+		for _, tree := range desc.TreeNumberList.TreeNumber {
+			root.AddNode(tree.TreeNumber, desc.DescriptorUI, desc.DescriptorName)
+			//log.Println("---------")
+			//log.Println(tree)
+			m := strings.Split(tree.TreeNumber, ".")
+			if len(m) > size {
+				size = len(m)
+			}
+		}
 		counter = counter + 1
 		if commitCounter == commitSize {
 			if err := tx.Commit(); err != nil {
@@ -128,6 +144,12 @@ func loadDescriptor(db *bolt.DB) {
 		log.Fatal(err)
 	}
 	log.Println("Loaded", counter, "description")
+	log.Println("Size=", size)
+	root.DepthTraverse(0, Visitor)
+}
+
+func Visitor(n *Node) {
+	log.Println("**  Visited", n.TreeNumber)
 }
 
 func loadQualifier(db *bolt.DB) {
