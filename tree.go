@@ -14,16 +14,6 @@ type Node struct {
 	ChildNodes []*Node
 }
 
-func InitializeNode() *Node {
-	root := new(Node)
-	root.TreeNumber = ""
-	root.NodeLabel = ""
-	root.RecordId = ""
-	root.ChildNodes = make([]*Node, 0, 5)
-	root.ChildIds = make([]string, 0, 5)
-	return root
-}
-
 func (node *Node) AddNode(treeNumber string, descriptorUi string, descriptorName string) {
 	parts := strings.Split(treeNumber, ".")
 	node.addChildren(parts, 0, descriptorUi, descriptorName)

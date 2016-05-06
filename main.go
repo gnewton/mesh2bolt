@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"flag"
 	"github.com/boltdb/bolt"
-	"github.com/gnewton/gomesh"
+	"github.com/gnewton/gomesh2014"
 	"log"
 	"strings"
 )
@@ -75,7 +75,7 @@ func loadDescriptor(db *bolt.DB) {
 
 	log.Println("\tLoading Description MeSH XML from file: ", *descriptorXmlFile)
 
-	descChannel, file, err := gomesh.DescriptorChannelFromFile(*descriptorXmlFile)
+	descChannel, file, err := gomesh2014.DescriptorChannelFromFile(*descriptorXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -90,7 +90,15 @@ func loadDescriptor(db *bolt.DB) {
 
 	size := 0
 
-	root := InitializeNode()
+	// This is the root of the tree
+	//	root := InitializeNode()
+	root := Node{
+	TreeNumber: "",
+	NodeLabel: "",
+	RecordId: "",
+	ChildNodes: make([]*Node, 0, 5),
+	ChildIds: make([]string, 0, 5),
+}	
 
 	for desc := range descChannel {
 		for _, tree := range desc.TreeNumberList.TreeNumber {
@@ -171,7 +179,7 @@ func loadQualifier(db *bolt.DB) {
 
 	log.Println("\tLoading Qualifier MeSH XML from file: ", *qualifierXmlFile)
 
-	qualChannel, file, err := gomesh.QualifierChannelFromFile(*qualifierXmlFile)
+	qualChannel, file, err := gomesh2014.QualifierChannelFromFile(*qualifierXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -248,7 +256,7 @@ func loadPharmacological(db *bolt.DB) {
 
 	log.Println("\tLoading Pharmacological MeSH XML from file: ", *pharmacologicalXmlFile)
 
-	pharmaChannel, file, err := gomesh.PharmacologicalChannelFromFile(*pharmacologicalXmlFile)
+	pharmaChannel, file, err := gomesh2014.PharmacologicalChannelFromFile(*pharmacologicalXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -324,7 +332,7 @@ func loadSupplemental(db *bolt.DB) {
 
 	log.Println("\tLoading Supplemental MeSH XML from file: ", *supplementalXmlFile)
 
-	suppChannel, file, err := gomesh.SupplementalChannelFromFile(*supplementalXmlFile)
+	suppChannel, file, err := gomesh2014.SupplementalChannelFromFile(*supplementalXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
