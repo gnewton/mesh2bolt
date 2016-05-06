@@ -6,21 +6,22 @@ import (
 	"encoding/json"
 	"flag"
 	"github.com/boltdb/bolt"
-	"github.com/gnewton/gomesh2014"
+	"github.com/gnewton/gomesh2016"
 	"log"
 	"strings"
 )
 
-// Write MeSH XMl for MeSH 2014
+// Write MeSH XMl for MeSH 2016
 // Glen Newton
 // Copyright 2016
 //
 
-const MESH_VERSION = 2014
+const MESH_VERSION = 2016
 const BUCKET_DESCRIPTOR = "descriptor"
 const BUCKET_PHARMACOLOGICAL = "pharmacological"
 const BUCKET_QUALIFIER = "qualifier"
 const BUCKET_SUPPLEMENTAL = "supplemental"
+const BUCKET_TREE = "tree"
 
 var descriptorXmlFile *string
 var qualifierXmlFile *string
@@ -56,6 +57,10 @@ func main() {
 
 }
 
+type visitor func(*StoreNode, int, *bolt.Bucket)
+
+
+
 func loadDescriptor(db *bolt.DB) {
 	tx, err := db.Begin(true)
 	if err != nil {
@@ -75,7 +80,7 @@ func loadDescriptor(db *bolt.DB) {
 
 	log.Println("\tLoading Description MeSH XML from file: ", *descriptorXmlFile)
 
-	descChannel, file, err := gomesh2014.DescriptorChannelFromFile(*descriptorXmlFile)
+	descChannel, file, err := gomesh2016.DescriptorChannelFromFile(*descriptorXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -91,25 +96,20 @@ func loadDescriptor(db *bolt.DB) {
 	size := 0
 
 	// This is the root of the tree
-	//	root := InitializeNode()
-	root := Node{
-	TreeNumber: "",
-	NodeLabel: "",
-	RecordId: "",
-	ChildNodes: make([]*Node, 0, 5),
-	ChildIds: make([]string, 0, 5),
-}	
+	root := InitializeNode()
 
 	for desc := range descChannel {
-		for _, tree := range desc.TreeNumberList.TreeNumber {
-			root.AddNode(tree.TreeNumber, desc.DescriptorUI, desc.DescriptorName)
+	        if desc.TreeNumberList != nil{
+		for _, treeNumber := range desc.TreeNumberList.TreeNumber {
+			root.AddNode(treeNumber, desc.DescriptorUI, desc.DescriptorName)
 			//log.Println("---------")
 			//log.Println(tree)
-			m := strings.Split(tree.TreeNumber, ".")
+			m := strings.Split(treeNumber, ".")
 			if len(m) > size {
 				size = len(m)
 			}
 		}
+}
 		counter = counter + 1
 		if commitCounter == commitSize {
 			if err := tx.Commit(); err != nil {
@@ -153,11 +153,20 @@ func loadDescriptor(db *bolt.DB) {
 	}
 	log.Println("Loaded", counter, "description")
 	log.Println("Size=", size)
-	root.DepthTraverse(0, Visitor)
+
+
+	// TREE
+	tx, err = db.Begin(true)
+	if err != nil {
+		log.Fatal(err)
+	}
+	treeBucket := tx.Bucket([]byte(BUCKET_TREE))
+
+	root.DepthTraverse(0, Visitor, treeBucket)
 }
 
-func Visitor(n *Node) {
-	log.Println("**  Visited", n.TreeNumber)
+func Visitor(n *StoreNode, depth int, b *bolt.Bucket) {
+	log.Println(spaces(depth),"**  Visited", n.TreeNumber)
 }
 
 func loadQualifier(db *bolt.DB) {
@@ -179,7 +188,7 @@ func loadQualifier(db *bolt.DB) {
 
 	log.Println("\tLoading Qualifier MeSH XML from file: ", *qualifierXmlFile)
 
-	qualChannel, file, err := gomesh2014.QualifierChannelFromFile(*qualifierXmlFile)
+	qualChannel, file, err := gomesh2016.QualifierChannelFromFile(*qualifierXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -256,7 +265,7 @@ func loadPharmacological(db *bolt.DB) {
 
 	log.Println("\tLoading Pharmacological MeSH XML from file: ", *pharmacologicalXmlFile)
 
-	pharmaChannel, file, err := gomesh2014.PharmacologicalChannelFromFile(*pharmacologicalXmlFile)
+	pharmaChannel, file, err := gomesh2016.PharmacologicalChannelFromFile(*pharmacologicalXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -332,7 +341,7 @@ func loadSupplemental(db *bolt.DB) {
 
 	log.Println("\tLoading Supplemental MeSH XML from file: ", *supplementalXmlFile)
 
-	suppChannel, file, err := gomesh2014.SupplementalChannelFromFile(*supplementalXmlFile)
+	suppChannel, file, err := gomesh2016.SupplementalChannelFromFile(*supplementalXmlFile)
 	if err != nil {
 		log.Fatal(err)
 	}
